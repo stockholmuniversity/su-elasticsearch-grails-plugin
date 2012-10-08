@@ -22,15 +22,10 @@ grails.project.dependency.resolution = {
         // from public Maven repositories
         mavenLocal()
         mavenCentral()
-        //mavenRepo "http://snapshots.repository.codehaus.org"
-        //mavenRepo "http://repository.codehaus.org"
-        //mavenRepo "http://download.java.net/maven/2/"
-        //mavenRepo "http://repository.jboss.com/maven2/"
-        mavenRepo "http://oss.sonatype.org/content/repositories/releases/"
     }
     dependencies {
         // specify dependencies here under either 'build', 'compile', 'runtime', 'test' or 'provided' scopes eg.
-        runtime "org.elasticsearch:elasticsearch:0.19.3"
+        runtime "org.elasticsearch:elasticsearch:0.19.10"
         runtime "org.elasticsearch:elasticsearch-lang-groovy:1.1.0"
     }
     plugins {
