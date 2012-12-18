@@ -94,20 +94,47 @@ class ClientNodeFactoryBean implements FactoryBean {
 
             case 'dataNode':
                 def storeType = elasticSearchContextHolder.config.index.store.type
+
                 if (storeType) {
                   nb.settings().put('index.store.type', storeType as String)
-                  LOG.debug "DataNode ElasticSearch client with store type of ${storeType} configured."
+                  LOG.info "DataNode ElasticSearch client with store type of ${storeType} configured."
                 } else {
-                  LOG.debug "DataNode ElasticSearch client with default store type configured."
+                  LOG.info "DataNode ElasticSearch client with default store type configured."
                 }
+
                 def queryParsers = elasticSearchContextHolder.config.index.queryparser
                 if (queryParsers) {
                   queryParsers.each { type, clz ->
                     nb.settings().put("index.queryparser.types.${type}".toString(), clz)
                   }
                 }
-                if (elasticSearchContextHolder.config.discovery.zen.ping.unicast.hosts) {
-                  nb.settings().put("discovery.zen.ping.unicast.hosts", elasticSearchContextHolder.config.discovery.zen.ping.unicast.hosts)
+
+                /** Handling Zen */
+                Map zen = elasticSearchContextHolder.config.discovery.zen
+
+                LOG.info "***** Zen configured with keys ******"
+
+                for (String zenKey in zen.keySet()) {
+                  LOG.info "Key: $zenKey => ${zen[zenKey]}"
+                }
+
+                LOG.info "*************************************"
+
+                if (zen.ping.unicast.hosts) {
+                  Boolean value = zen.ping.unicast.hosts
+                  nb.settings().put("discovery.zen.ping.unicast.hosts", value)
+                }
+
+                if (zen.minimum_master_nodes) {
+                  nb.settings().put("discovery.zen.minimum_master_nodes", zen.minimum_master_nodes)
+                }
+
+                if (zen.ping_timeout) {
+                  nb.settings().put("discovery.zen.ping_timeout", zen.ping_timeout)
+                }
+
+                if (zen.fd.ping_retries) {
+                  nb.settings().put("discovery.zen.fd.ping_retries", zen.fd.ping_retries)
                 }
 
                 nb.client(false)
