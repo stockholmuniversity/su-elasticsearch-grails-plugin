@@ -29,6 +29,8 @@ grails.project.dependency.resolution = {
     }
     dependencies {
         // specify dependencies here under either 'build', 'compile', 'runtime', 'test' or 'provided' scopes eg.
+        test "org.spockframework:spock-grails-support:0.7-groovy-2.0"
+        build "org.grails.plugins:release:latest.integration"
         build "com.spatial4j:spatial4j:0.3"
         runtime "org.elasticsearch:elasticsearch:0.20.5"
         runtime "org.elasticsearch:elasticsearch-lang-groovy:1.1.0"
@@ -39,6 +41,7 @@ grails.project.dependency.resolution = {
         }
         test (":spock:0.7") {
             export = false
+            exclude "spock-grails-support"
         }
     }
 }
