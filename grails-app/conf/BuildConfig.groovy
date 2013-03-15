@@ -30,7 +30,7 @@ grails.project.dependency.resolution = {
     dependencies {
         // specify dependencies here under either 'build', 'compile', 'runtime', 'test' or 'provided' scopes eg.
         build "com.spatial4j:spatial4j:0.3"
-        runtime "org.elasticsearch:elasticsearch:0.20.1"
+        runtime "org.elasticsearch:elasticsearch:0.20.5"
         runtime "org.elasticsearch:elasticsearch-lang-groovy:1.1.0"
     }
     plugins {
