@@ -20,7 +20,6 @@ import org.codehaus.groovy.grails.commons.GrailsDomainClassProperty
 import org.elasticsearch.common.xcontent.XContentBuilder
 import static org.elasticsearch.common.xcontent.XContentFactory.*
 import org.codehaus.groovy.grails.commons.GrailsDomainClass
-import org.codehaus.groovy.grails.commons.ApplicationHolder
 import org.grails.plugins.elasticsearch.conversion.marshall.DeepDomainClassMarshaller
 import org.grails.plugins.elasticsearch.conversion.marshall.DefaultMarshallingContext
 import org.grails.plugins.elasticsearch.conversion.marshall.DefaultMarshaller
