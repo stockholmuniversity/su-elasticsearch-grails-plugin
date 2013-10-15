@@ -16,6 +16,7 @@
 
 package org.grails.plugins.elasticsearch.mapping;
 
+import grails.util.Holders;
 import groovy.util.ConfigObject;
 import org.apache.log4j.Logger;
 import org.codehaus.groovy.grails.commons.*;
@@ -61,7 +62,7 @@ public class SearchableClassMappingConfigurator {
 //        settings.put("number_of_replicas", 2);
         settings.put("number_of_replicas", 0);
         // Look for default index settings.
-        Map esConfig = (Map) ConfigurationHolder.getConfig().getProperty("elasticSearch");
+        Map esConfig = (Map) Holders.getConfig().getProperty("elasticSearch");
         if (esConfig != null) {
             @SuppressWarnings({"unchecked"})
             Map<String, Object> indexDefaults = (Map<String, Object>) esConfig.get("index");
